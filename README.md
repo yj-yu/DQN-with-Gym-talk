@@ -1,3 +1,3 @@
-# DQN with OpenAI Gym - made by Byeongchang Kim
+# DQN with OpenAI Gym 
 
-https://bckim92.github.io/DQN-with-Gym-talk
+
