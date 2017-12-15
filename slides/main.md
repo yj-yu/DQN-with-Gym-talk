@@ -1,4 +1,4 @@
-name: inverse
+﻿name: inverse
 class: center, middle, inverse
 layout: true
 
@@ -14,9 +14,9 @@ layout: false
 
 ## About
 
-?�번 ?�습?�서??Deep Q-Learning ???�??간략???�펴�???
+이번 실습에서는 Deep Q-Learning 에 대해 간략히 살펴본 후,
 
-?��? Tensorflow?� OpenAI Gym???�용?�서 구현?�보??것을 목표�??�니??
+이를 Tensorflow와 OpenAI Gym을 이용해서 구현해보는 것을 목표로 합니다.
 
 ---
 
@@ -292,19 +292,19 @@ template: inverse
 
 # Disclaimer
 
-?�후 ?�라?�드??코드??**가?�성**???�해 많�? 코드�??�략?�습?�다.
+이후 슬라이드의 코드는 **가독성**을 위해 많은 코드를 생략했습니다.
 
-(?�제 코드?�???�릅?�다.)
+(실제 코드와는 다릅니다.)
 
 ---
 
 # Disclaimer
 
-?�후 ?�라?�드??코드??**가?�성**???�해 많�? 코드�??�략?�습?�다.
+이후 슬라이드의 코드는 **가독성**을 위해 많은 코드를 생략했습니다.
 
-(?�제 코드?�???�릅?�다.)
+(실제 코드와는 다릅니다.)
 
-?�한, 기존??DQN??구현???��???코드?�이 많으?? ?�래 링크?�을 참고?�시�?공�??�는???��???많이 ??�?같습?�다.
+또한, 기존에 DQN을 구현한 훌륭한 코드들이 많으니, 아래 링크들을 참고하시면 공부하는데 도움이 많이 될 것 같습니다.
 
 https://github.com/carpedm20/deep-rl-tensorflow
 https://github.com/nivwusquorum/tensorflow-deepq
@@ -323,20 +323,20 @@ https://github.com/nivwusquorum/tensorflow-deepq
 
 ```bash
 ./
-*?��??� requirements.txt
-?��??� main.py
-?��??� dqn
-??  ?��??� agent.py
-??  ?��??� replay_memory.py
-?��??� utils
-    ?��??� utils.py
+*├── requirements.txt
+├── main.py
+├── dqn
+│   ├── agent.py
+│   └── replay_memory.py
+└── utils
+    └── utils.py
 ```
 
 - requirements.txt
 
-코드 ?�행???�요???�키지 리스?�들???�어?��? ?�일?�니??
+코드 실행에 필요한 패키지 리스트들을 적어놓은 파일입니다.
 
-`pip install -r requirements.txt`�??��??�있???�키지?�을 ?�번???�치?????�습?�다.
+`pip install -r requirements.txt`로 적혀져있는 패키지들을 한번에 설치할 수 있습니다.
 
 ---
 
@@ -344,22 +344,22 @@ https://github.com/nivwusquorum/tensorflow-deepq
 
 ```bash
 ./
-?��??� requirements.txt
-*?��??� main.py
-?��??� dqn
-??  ?��??� agent.py
-??  ?��??� replay_memory.py
-?��??� utils
-*   ?��??� utils.py
+├── requirements.txt
+*├── main.py
+├── dqn
+│   ├── agent.py
+│   └── replay_memory.py
+└── utils
+*   └── utils.py
 ```
 
 - main.py
 
-DQN agent?� Gym environment가 ?�행?�는 부분이 구현?�어 ?�는 ?�일?�니??
+DQN agent와 Gym environment가 실행되는 부분이 구현되어 있는 파일입니다.
 
 - utils/utils.py
 
-?�요??utility method?�이 구현?�어 ?�는 ?�일?�니??
+필요한 utility method들이 구현되어 있는 파일입니다.
 
 ---
 
@@ -367,22 +367,22 @@ DQN agent?� Gym environment가 ?�행?�는 부분이 구현?�어 ?�는 ?�일?�니
 
 ```bash
 ./
-?��??� requirements.txt
-?��??� main.py
-?��??� dqn
-*??  ?��??� agent.py
-*??  ?��??� replay_memory.py
-?��??� utils
-    ?��??� utils.py
+├── requirements.txt
+├── main.py
+├── dqn
+*│   ├── agent.py
+*│   └── replay_memory.py
+└── utils
+    └── utils.py
 ```
 
 - dqn/agent.py
 
-DQN agent가 구현?�어 ?�는 ?�일?�니??
+DQN agent가 구현되어 있는 파일입니다.
 
 - dqn/replay_memory.py
 
-Experience replay???�요??replay memory가 구현?�어 ?�는 ?�일?�니??
+Experience replay에 필요한 replay memory가 구현되어 있는 파일입니다.
 
 ---
 
@@ -406,7 +406,7 @@ def main():
     action = agent.train(observation, reward, done, step)
 ```
 
-Agent?� Gym environment�?만들?�줍?�다.
+Agent와 Gym environment를 만들어줍니다.
 
 ---
 
@@ -430,9 +430,9 @@ def main():
     action = agent.train(observation, reward, done, step)
 ```
 
-�?frame??보는 ?�??k번마??frame??보는 frame-skipping???�용?�켜줍니??
+매 frame을 보는 대신 k번마다 frame을 보는 frame-skipping을 적용시켜줍니다.
 
-DQN paper ?�서??4번마??frame??봅니??
+DQN paper 에서는 4번마다 frame을 봅니다.
 
 ---
 
@@ -456,7 +456,7 @@ def main():
     action = agent.train(observation, reward, done, step)
 ```
 
-그레???��??�로 변?�하�? ?��? ?�이즈로 줄여줍니??(utils/utils.py)
+그레이 스케일로 변환하고, 작은 사이즈로 줄여줍니다 (utils/utils.py)
 
 ```python
 def atari_preprocessing(raw_image, width, height):
@@ -486,9 +486,9 @@ def main():
 *   action = agent.train(observation, reward, done, step)
 ```
 
-?�재 ?�레?�을 보고, Q 값을 최�????�키??action???�측?�니??
+현재 프레임을 보고, Q 값을 최대화 시키는 action을 예측합니다.
 
-?�한 agent�??�습?�킵?�다.
+또한 agent를 학습시킵니다.
 
 ---
 
@@ -529,7 +529,7 @@ def __init__(self):
   self.done = tf.placeholder(tf.float32, [None])
 ```
 
-Experience replay�??�한 replay memory�?만들?�줍?�다.
+Experience replay를 위한 replay memory를 만들어줍니다.
 
 (dqn/replay_memory.py)
 
@@ -550,7 +550,7 @@ def __init__(self):
   self.done = tf.placeholder(tf.float32, [None])
 ```
 
-???�의 ?��?지�?붙여 ?�나???��?지�?만들??줍니?? (dqn/replay_memory.py)
+네 장의 이미지를 붙여 하나의 이미지로 만들어 줍니다. (dqn/replay_memory.py)
 
 .center.img-75[![](images/rl/atari_history.png)]
 
@@ -573,7 +573,7 @@ def __init__(self):
 * self.done = tf.placeholder(tf.float32, [None])
 ```
 
-$(s\_t,a\_t,r\_t,s\_{t+1})$???�어�?placeholder�?만들??줍니??
+$(s\_t,a\_t,r\_t,s\_{t+1})$을 넣어줄 placeholder를 만들어 줍니다.
 
 ---
 
@@ -633,7 +633,7 @@ def build():
   ...
 ```
 
-$\underset{a}{\operatorname{argmax}} Q(s,a,w)$ �?계산?�주??`inference_action_op`??만들?�줍?�다.
+$\underset{a}{\operatorname{argmax}} Q(s,a,w)$ 를 계산해주는 `inference_action_op`을 만들어줍니다.
 
 ---
 
@@ -656,7 +656,7 @@ def build():
   ...
 ```
 
-Delta 값인 $\underbrace{r + \gamma \max a' Q(s', a', w^-)}\_{target} - Q(s,a,w)$ �?계산??줍니??
+Delta 값인 $\underbrace{r + \gamma \max a' Q(s', a', w^-)}\_{target} - Q(s,a,w)$ 를 계산해 줍니다.
 
 ---
 
@@ -679,21 +679,21 @@ def build():
   ...
 ```
 
-Delta�?$[-1,1]$�?clipping ?�줍?�다.
+Delta를 $[-1,1]$로 clipping 해줍니다.
 
 ---
 
 # Issue with Delta Clipping
 
-그런?? ????치명?�인 ?�수가 발생?????�습?�다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
+그런데, 이 때 치명적인 실수가 발생할 수 있습니다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
 
 ---
 
 # Issue with Delta Clipping
 
-그런?? ????치명?�인 ?�수가 발생?????�습?�다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
+그런데, 이 때 치명적인 실수가 발생할 수 있습니다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
 
-?�반?�으�?clipping?�는 `tf.clip_by_value`�??�용?�니??
+일반적으로 clipping에는 `tf.clip_by_value`를 사용합니다.
 
 ```python
 clipped_delta = tf.clip_by_value(delta, clip_value_min=-1.0, clip_value_max=1.0)
@@ -703,25 +703,25 @@ clipped_delta = tf.clip_by_value(delta, clip_value_min=-1.0, clip_value_max=1.0)
 
 # Issue with Delta Clipping
 
-그런?? ????치명?�인 ?�수가 발생?????�습?�다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
+그런데, 이 때 치명적인 실수가 발생할 수 있습니다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
 
-?�반?�으�?clipping?�는 `tf.clip_by_value`�??�용?�니??
+일반적으로 clipping에는 `tf.clip_by_value`를 사용합니다.
 
 ```python
 clipped_delta = tf.clip_by_value(delta, clip_value_min=-1.0, clip_value_max=1.0)
 ```
 
-?��?�? ?��? ?�용?�게 ?�면 clip ?�었????scalar 값이 ?�오�??�니??
+하지만, 이를 사용하게 되면 clip 되었을 때 scalar 값이 나오게 됩니다.
 
-?�라?? 미분값이 0???�오�??�며, gradient가 0?�채�?backpropagation???�게 ?�니??
+따라서, 미분값이 0이 나오게 되며, gradient가 0인채로 backpropagation을 하게 됩니다.
 
-?�는 ?�습??치명?�인 ?�향??미치�??�니??
+이는 학습에 치명적인 영향을 미치게 됩니다.
 
 ---
 
 # Issue with Delta Clipping
 
-그래???�음�?같이 Huber loss�??�용?�줘???�니??
+그래서 다음과 같이 Huber loss를 사용해줘야 합니다.
 
 ```python
 def clipped_error(x):
@@ -758,7 +758,7 @@ def build():
   ...
 ```
 
-RMSPropOptimizer�??�용?�여 `train_op`??만들??줍니??
+RMSPropOptimizer를 이용하여 `train_op`을 만들어 줍니다.
 
 ---
 
@@ -781,7 +781,7 @@ def build():
   target_update_op = tf.group(*target_update_op)
 ```
 
-주기?�으�?target network�??�데?�트 ?�주�??�해, source network???�라미터�?target network???�당?�는 `target_update_op`??만들??줍니??
+주기적으로 target network를 업데이트 해주기 위해, source network의 파라미터를 target network에 할당하는 `target_update_op`을 만들어 줍니다.
 
 ---
 
@@ -831,22 +831,22 @@ def train(new_state, reward, done):
   ...
 ```
 
-Exploration???�상?�켜주기 ?�해, ?�정 ?�률�??�덤?�게 ?�직이??$\epsilon$-greedy policy�??�용?�켜 줍니??
+Exploration을 향상시켜주기 위해, 일정 확률로 랜덤하게 움직이는 $\epsilon$-greedy policy를 적용시켜 줍니다.
 .center.img-40[![](images/rl/epsilon_greedy.png)]
 
 ---
 
 # Now, let's start training!
 
-?�래 커맨?��? ?�행?�키�??�레?�닝???�작?�니??
+아래 커맨드를 실행시키면 트레이닝이 시작됩니다.
 
 ```bash
 python main.py
 ```
 
-그런?? Replay Memory (100�??�기) ?�문??32기�?바이???�상??메모리�? ?�요?�니??
+그런데, Replay Memory (100만 크기) 때문에 32기가바이트 이상의 메모리가 필요합니다.
 
-?�재 ?�트북�? 4기�?바이??메모리�? ?�착?�고 ?�기 ?�문?? ?�래?� 같이 ?�이즈�? 줄여???�행?�켜???�니??
+현재 노트북은 4기가바이트 메모리를 장착하고 있기 때문에, 아래와 같이 사이즈를 줄여서 실행시켜야 합니다.
 
 ```bash
 python main.py --memory_size 50000
@@ -857,7 +857,7 @@ python main.py --memory_size 50000
 
 # Can We Do Better?
 
-Yes!??
+Yes!😀
 
 ---
 
