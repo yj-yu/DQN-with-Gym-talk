@@ -14,9 +14,9 @@ layout: false
 
 ## About
 
-이번 실습에서는 Deep Q-Learning 에 대해 간략히 살펴본 후,
+?�번 ?�습?�서??Deep Q-Learning ???�??간략???�펴�???
 
-이를 Tensorflow와 OpenAI Gym을 이용해서 구현해보는 것을 목표로 합니다.
+?��? Tensorflow?� OpenAI Gym???�용?�서 구현?�보??것을 목표�??�니??
 
 ---
 
@@ -292,9 +292,22 @@ template: inverse
 
 # Disclaimer
 
-이후 슬라이드의 코드는 **가독성**을 위해 많은 코드를 생략했습니다.
+?�후 ?�라?�드??코드??**가?�성**???�해 많�? 코드�??�략?�습?�다.
 
-(실제 코드와는 다릅니다.)
+(?�제 코드?�???�릅?�다.)
+
+---
+
+# Disclaimer
+
+?�후 ?�라?�드??코드??**가?�성**???�해 많�? 코드�??�략?�습?�다.
+
+(?�제 코드?�???�릅?�다.)
+
+?�한, 기존??DQN??구현???��???코드?�이 많으?? ?�래 링크?�을 참고?�시�?공�??�는???��???많이 ??�?같습?�다.
+
+https://github.com/carpedm20/deep-rl-tensorflow
+https://github.com/nivwusquorum/tensorflow-deepq
 
 ---
 
@@ -306,74 +319,74 @@ template: inverse
 
 ---
 
-# Code structure
+# Code Structure
 
 ```bash
 ./
-*├── requirements.txt
-├── main.py
-├── dqn
-│   ├── agent.py
-│   └── replay_memory.py
-└── utils
-    └── utils.py
+*?��??� requirements.txt
+?��??� main.py
+?��??� dqn
+??  ?��??� agent.py
+??  ?��??� replay_memory.py
+?��??� utils
+    ?��??� utils.py
 ```
 
 - requirements.txt
 
-코드 실행에 필요한 패키지 리스트들을 적어놓은 파일입니다.
+코드 ?�행???�요???�키지 리스?�들???�어?��? ?�일?�니??
 
-`pip install -r requirements.txt`로 적혀져있는 패키지들을 한번에 설치할 수 있습니다.
+`pip install -r requirements.txt`�??��??�있???�키지?�을 ?�번???�치?????�습?�다.
 
 ---
 
-# Code structure
+# Code Structure
 
 ```bash
 ./
-├── requirements.txt
-*├── main.py
-├── dqn
-│   ├── agent.py
-│   └── replay_memory.py
-└── utils
-*   └── utils.py
+?��??� requirements.txt
+*?��??� main.py
+?��??� dqn
+??  ?��??� agent.py
+??  ?��??� replay_memory.py
+?��??� utils
+*   ?��??� utils.py
 ```
 
 - main.py
 
-DQN agent와 Gym environment가 실행되는 부분이 구현되어 있는 파일입니다.
+DQN agent?� Gym environment가 ?�행?�는 부분이 구현?�어 ?�는 ?�일?�니??
 
 - utils/utils.py
 
-필요한 utility method들이 구현되어 있는 파일입니다.
+?�요??utility method?�이 구현?�어 ?�는 ?�일?�니??
 
 ---
 
-# Code structure
+# Code Structure
 
 ```bash
 ./
-├── requirements.txt
-├── main.py
-├── dqn
-*│   ├── agent.py
-*│   └── replay_memory.py
-└── utils
-    └── utils.py
+?��??� requirements.txt
+?��??� main.py
+?��??� dqn
+*??  ?��??� agent.py
+*??  ?��??� replay_memory.py
+?��??� utils
+    ?��??� utils.py
 ```
 
 - dqn/agent.py
 
-DQN agent가 구현되어 있는 파일입니다.
+DQN agent가 구현?�어 ?�는 ?�일?�니??
 
 - dqn/replay_memory.py
 
-Experience replay에 필요한 replay memory가 구현되어 있는 파일입니다.
+Experience replay???�요??replay memory가 구현?�어 ?�는 ?�일?�니??
 
 ---
 
-# Environment setup (main.py)
+# Environment Setup (main.py)
 
 ```python
 def main():
@@ -393,11 +406,11 @@ def main():
     action = agent.train(observation, reward, done, step)
 ```
 
-Agent와 Gym environment를 만들어줍니다.
+Agent?� Gym environment�?만들?�줍?�다.
 
 ---
 
-# Environment setup (main.py)
+# Environment Setup (main.py)
 
 ```python
 def main():
@@ -417,13 +430,13 @@ def main():
     action = agent.train(observation, reward, done, step)
 ```
 
-매 frame을 보는 대신 k번마다 frame을 보는 frame-skipping을 적용시켜줍니다.
+�?frame??보는 ?�??k번마??frame??보는 frame-skipping???�용?�켜줍니??
 
-DQN paper 에서는 4번마다 frame을 봅니다.
+DQN paper ?�서??4번마??frame??봅니??
 
 ---
 
-# Environment setup (main.py)
+# Environment Setup (main.py)
 
 ```python
 def main():
@@ -443,7 +456,7 @@ def main():
     action = agent.train(observation, reward, done, step)
 ```
 
-그레이 스케일로 변환하고, 작은 사이즈로 줄여줍니다 (utils/utils.py)
+그레???��??�로 변?�하�? ?��? ?�이즈로 줄여줍니??(utils/utils.py)
 
 ```python
 def atari_preprocessing(raw_image, width, height):
@@ -453,7 +466,7 @@ def atari_preprocessing(raw_image, width, height):
 
 ---
 
-# Environment setup (main.py)
+# Environment Setup (main.py)
 
 ```python
 def main():
@@ -473,16 +486,15 @@ def main():
 *   action = agent.train(observation, reward, done, step)
 ```
 
-현재 프레임을 보고, Q 값을 최대화 시키는 action을 예측합니다.
+?�재 ?�레?�을 보고, Q 값을 최�????�키??action???�측?�니??
 
-또한 agent를 학습시킵니다.
+?�한 agent�??�습?�킵?�다.
 
 ---
 
-# Environment setup (main.py)
+# Environment Setup (main.py)
 
 ```python
-def main():
 def main():
   env = gym.make("SpaceInvaders-v0")
 * agent = Agent(FLAGS, env.action_space.n)
@@ -502,7 +514,7 @@ def main():
 
 ---
 
-# Build input pipeline for model (dqn/agent.py)
+# Build Input Pipeline for Model (dqn/agent.py)
 
 ```python
 def __init__(self):
@@ -517,11 +529,13 @@ def __init__(self):
   self.done = tf.placeholder(tf.float32, [None])
 ```
 
-Experience replay를 위한 replay memory를 만들어줍니다.
+Experience replay�??�한 replay memory�?만들?�줍?�다.
+
+(dqn/replay_memory.py)
 
 ---
 
-# Build input pipeline for model (dqn/agent.py)
+# Build Input Pipeline for Model (dqn/agent.py)
 
 ```python
 def __init__(self):
@@ -536,7 +550,7 @@ def __init__(self):
   self.done = tf.placeholder(tf.float32, [None])
 ```
 
-네 장의 이미지를 붙여 하나의 이미지로 만들어 줍니다
+???�의 ?��?지�?붙여 ?�나???��?지�?만들??줍니?? (dqn/replay_memory.py)
 
 .center.img-75[![](images/rl/atari_history.png)]
 
@@ -544,7 +558,7 @@ def __init__(self):
 
 ---
 
-# Build input pipeline for model (dqn/agent.py)
+# Build Input Pipeline for Model (dqn/agent.py)
 
 ```python
 def __init__(self):
@@ -559,7 +573,7 @@ def __init__(self):
 * self.done = tf.placeholder(tf.float32, [None])
 ```
 
-$(s\_t,a\_t,r\_t,s\_{t+1})$을 넣어줄 placeholder를 만들어 줍니다.
+$(s\_t,a\_t,r\_t,s\_{t+1})$???�어�?placeholder�?만들??줍니??
 
 ---
 
@@ -572,7 +586,7 @@ $(s\_t,a\_t,r\_t,s\_{t+1})$을 넣어줄 placeholder를 만들어 줍니다.
 
 ---
 
-# Build source/target network (dqn/agent.py)
+# Build Source/Target Network (dqn/agent.py)
 
 ```python
 def build():
@@ -603,7 +617,7 @@ def _build_net(observation, name='source', trainable=True):
 
 ---
 
-# Build inference op (dqn/agent.py)
+# Build Inference Op (dqn/agent.py)
 
 ```python
 def build():
@@ -619,11 +633,11 @@ def build():
   ...
 ```
 
-$\underset{a}{\operatorname{argmax}} Q(s,a,w)$ 를 계산해주는 `inference_action_op`을 만들어줍니다.
+$\underset{a}{\operatorname{argmax}} Q(s,a,w)$ �?계산?�주??`inference_action_op`??만들?�줍?�다.
 
 ---
 
-# Compute loss and gradient (dqn/agent.py)
+# Compute Loss and Gradient (dqn/agent.py)
 
 ```python
 def build():
@@ -642,11 +656,11 @@ def build():
   ...
 ```
 
-Delta 값인 $\underbrace{r + \gamma \max a' Q(s', a', w^-)}\_{target} - Q(s,a,w)$ 를 계산해 줍니다.
+Delta 값인 $\underbrace{r + \gamma \max a' Q(s', a', w^-)}\_{target} - Q(s,a,w)$ �?계산??줍니??
 
 ---
 
-# Compute loss and gradient (dqn/agent.py)
+# Compute Loss and Gradient (dqn/agent.py)
 
 ```python
 def build():
@@ -665,21 +679,21 @@ def build():
   ...
 ```
 
-Delta를 $[-1,1]$로 clipping 해줍니다.
+Delta�?$[-1,1]$�?clipping ?�줍?�다.
 
 ---
 
-# Issue with delta clipping
+# Issue with Delta Clipping
 
-그런데, 이 때 치명적인 실수가 발생할 수 있습니다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
+그런?? ????치명?�인 ?�수가 발생?????�습?�다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
 
 ---
 
-# Issue with delta clipping
+# Issue with Delta Clipping
 
-그런데, 이 때 치명적인 실수가 발생할 수 있습니다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
+그런?? ????치명?�인 ?�수가 발생?????�습?�다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
 
-일반적으로 clipping에는 `tf.clip_by_value`를 사용합니다.
+?�반?�으�?clipping?�는 `tf.clip_by_value`�??�용?�니??
 
 ```python
 clipped_delta = tf.clip_by_value(delta, clip_value_min=-1.0, clip_value_max=1.0)
@@ -687,27 +701,27 @@ clipped_delta = tf.clip_by_value(delta, clip_value_min=-1.0, clip_value_max=1.0)
 
 ---
 
-# Issue with delta clipping
+# Issue with Delta Clipping
 
-그런데, 이 때 치명적인 실수가 발생할 수 있습니다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
+그런?? ????치명?�인 ?�수가 발생?????�습?�다. (https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
 
-일반적으로 clipping에는 `tf.clip_by_value`를 사용합니다.
+?�반?�으�?clipping?�는 `tf.clip_by_value`�??�용?�니??
 
 ```python
 clipped_delta = tf.clip_by_value(delta, clip_value_min=-1.0, clip_value_max=1.0)
 ```
 
-하지만, 이를 사용하게 되면 clip 되었을 때 scalar 값이 나오게 됩니다.
+?��?�? ?��? ?�용?�게 ?�면 clip ?�었????scalar 값이 ?�오�??�니??
 
-따라서, 미분값이 0이 나오게 되며, gradient가 0인채로 backpropagation을 하게 됩니다.
+?�라?? 미분값이 0???�오�??�며, gradient가 0?�채�?backpropagation???�게 ?�니??
 
-이는 학습에 치명적인 영향을 미치게 됩니다.
+?�는 ?�습??치명?�인 ?�향??미치�??�니??
 
 ---
 
-# Issue with delta clipping
+# Issue with Delta Clipping
 
-그래서 다음과 같이 Huber loss를 사용해줘야 합니다.
+그래???�음�?같이 Huber loss�??�용?�줘???�니??
 
 ```python
 def clipped_error(x):
@@ -725,7 +739,7 @@ def clipped_error(x):
 
 ---
 
-# Compute loss and gradient (dqn/agent.py)
+# Compute Loss and Gradient (dqn/agent.py)
 
 ```python
 def build():
@@ -744,11 +758,11 @@ def build():
   ...
 ```
 
-RMSPropOptimizer를 이용하여 `train_op`을 만들어 줍니다.
+RMSPropOptimizer�??�용?�여 `train_op`??만들??줍니??
 
 ---
 
-# Update target q network (dqn/agent.py)
+# Update Target Q Network (dqn/agent.py)
 
 ```python
 def build():
@@ -767,11 +781,11 @@ def build():
   target_update_op = tf.group(*target_update_op)
 ```
 
-주기적으로 target network를 업데이트 해주기 위해, source network의 파라미터를 target network에 할당하는 `target_update_op`을 만들어 줍니다.
+주기?�으�?target network�??�데?�트 ?�주�??�해, source network???�라미터�?target network???�당?�는 `target_update_op`??만들??줍니??
 
 ---
 
-# Train and run agent (dqn/agent.py)
+# Train and Run Agent (dqn/agent.py)
 
 ```python
 def train(new_state, reward, done):
@@ -800,10 +814,9 @@ def train(new_state, reward, done):
   if update_target:
     sess.run(self.target_update_op)
 ```
-
 ---
 
-# Better exploration (dqn/agent.py)
+# Better Exploration (dqn/agent.py)
 
 ```python
 def train(new_state, reward, done):
@@ -818,14 +831,188 @@ def train(new_state, reward, done):
   ...
 ```
 
-Exploration을 향상시켜주기 위해, 일정 확률로 랜덤하게 움직이는 $\epsilon$-greedy policy를 적용시켜 줍니다.
+Exploration???�상?�켜주기 ?�해, ?�정 ?�률�??�덤?�게 ?�직이??$\epsilon$-greedy policy�??�용?�켜 줍니??
 .center.img-40[![](images/rl/epsilon_greedy.png)]
 
 ---
 
-# Can we do better?
+# Now, let's start training!
 
-Yes!
+?�래 커맨?��? ?�행?�키�??�레?�닝???�작?�니??
+
+```bash
+python main.py
+```
+
+그런?? Replay Memory (100�??�기) ?�문??32기�?바이???�상??메모리�? ?�요?�니??
+
+?�재 ?�트북�? 4기�?바이??메모리�? ?�착?�고 ?�기 ?�문?? ?�래?� 같이 ?�이즈�? 줄여???�행?�켜???�니??
+
+```bash
+python main.py --memory_size 50000
+```
+
+
+---
+
+# Can We Do Better?
+
+Yes!??
+
+---
+
+# Can We Do Better?
+
+- **Dobule DQN (DDQN)**
+  - DQN uses same values to .red[select] and to .red[evaluate] an action $\rightarrow$ Resulting overoptimistic value estimates!
+  - Then decouple the selection from the evaluation
+
+  $$
+  \begin{align}
+    y\_t^{DQN} &= R\_{t+1} + \gamma \max\_{a} Q(S\_{t+1}, a; \theta\_t^{-}) \\\\
+    y\_t^{DDQN} &= R\_{t+1} + \gamma Q(S\_{t+1}, \color{red}{\underset{a}{\operatorname{argmax}} Q (S\_{t+1}, a; \theta\_{t})}, \theta\_t^-)
+  \end{align}
+  $$
+
+.center.small[H. Hasselt et al. [Deep Reinforcement Learning with Double Q-learning][hasselt-2016]. In *AAAI*, 2016]
+
+[hasselt-2016]: https://arxiv.org/abs/1509.06461
+
+---
+
+# Can We Do Better?
+
+- **Dobule DQN (DDQN)**
+
+.center.img-100[![](images/rl/ddqn.png)]
+.center.small[H. Hasselt et al. [Deep Reinforcement Learning with Double Q-learning][hasselt-2016]. In *AAAI*, 2016]
+
+[hasselt-2016]: https://arxiv.org/abs/1509.06461
+
+---
+
+# Can We Do Better?
+
+- **Deuling Q-Network**
+  - Seperates the representation of .red[state values] $\hat{V} (S)$ and .red[action advantages] $\hat{A} (S)$
+
+.center.img-70[![](images/rl/dueling_network.png)]
+.center.small[Z. Wang et al. [Dueling Network Architectures for Deep Reinforcement Learning][wang-2016]. In *ICML*, 2016]
+
+[wang-2016]: https://arxiv.org/abs/1511.06581
+
+---
+
+# Can We Do Better?
+
+- **Prioritized Experience Replay**
+  - **Key idea**
+      - Not all transitions are useful
+      - Then, RL can learn more effectively from some transitions than others!
+  - **Approach**
+      - Sampling transitions with high **Temporal-Difference error** $\delta\_t$
+
+$$
+\delta\_t = R\_t + \gamma\_t \max\_a Q\_{target}(S\_t,a) - Q(S\_{t-1},A\_{t-1})
+$$
+
+.center.small[T. Schaul et al. [Prioritized Experience Replay][schaul-2016]. In *ICML*, 2016]
+
+[schaul-2016]: https://arxiv.org/abs/1511.05952
+
+---
+template: inverse
+
+# Useful Tips for Designing Your Own RL Agent
+
+.footnote[(Slide credit: [J. Schulman's Talk](http://joschu.net/docs/nuts-and-bolts.pdf))]
+
+
+---
+
+# New Algorithm? Use Small Test Problems
+
+- Run experiments quickly
+- Do hyperparameter search
+- Interpret and visualize learning process: state visitation, value function, etc.
+- Useful to have medium-sized problems that you're intimately familira with (Hopper, Atari Pong)
+
+---
+
+# New Task? Make It Easier Until Signs of Life
+
+- Provide good input features
+- Shape reward function
+
+---
+
+# Run Your Baselines
+
+- Don't expect them to work with default parameters
+- Recommended ([rllab](https://github.com/openai/rllab), [OpenAI lab](https://github.com/kengz/openai_lab), [keras-rl](https://github.com/matthiasplappert/keras-rl)) :
+  - Cross-entropy method
+  - Well-tuned policy gradient method
+  - Well-tuned Q-learning + SARSA method
+
+---
+
+# Run with More Samples Than Expected
+
+- Early in tuning process, may need huge number of samples
+  - Don't be deterred by published work
+- Examples:
+  - DQN on Atari: update freq=10K, replay buffer size=1M
+
+---
+
+# It Works! But Don't Be Satisfied
+
+- Explore sensitivity to each parameter
+  - If too sensitive, it doesn't really work, you just got lucky
+- Look for health
+  - VF fit quality
+  - Policy entropy
+  - Standard diagnostics of deep networks
+
+---
+
+# General RL Diagnostics
+
+- Look at min / max /stdev of episode returns, along with mean
+- Look at episode lengths: sometimes provides additional information
+  - Solving problem faster, losing game slower
+
+---
+
+# Always Whitening / Standardizing Data
+
+- If observations have unknown range, standardize
+  - Compute running estimate of mean and standard deviation
+  - $x' = clip((x - \mu) / \sigma, -10, 10)$
+- Rescale the rewards, but don't shift mean, as that affects agent's will to live
+- Standardize prediction targets (e.g. value functions) the same way
+
+---
+
+# Generally Important Parameters
+
+- Discount
+  - $Return\_t = r\_t + \gamma r\_{t+1} + \gamma^2 r\_{t+2} + ...$
+  - Effective time horizon: $1 + \gamma + \gamma^2 + ... = 1 / (1 - \gamma)$
+      - i.e. $\gamma = 0.99 \rightarrow$ ignore rewards delayed by more than 100 timesteps
+  - Low $\gamma$ works well for well-shaped reward
+- Action frequency
+  - Solvable with human control (if possible)
+
+---
+
+# Q-Learning Strategies
+
+- Optimize memory usage carefully: you'll need it for replay buffer
+- Learning rate schedules
+- Exploration schedules
+- Be patient. DQN converges slowly
+  - On Atari, often 10-40M frames to get policy much better than random
 
 ---
 
